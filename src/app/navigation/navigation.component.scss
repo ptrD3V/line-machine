@@ -53,11 +53,19 @@ li {
 
 .state-running .state-icon {
   color: var(--success-color);
+  animation: rotate 2s linear infinite;
 }
 
 .state-error .state-icon,
 .state-idle .state-icon {
   color: var(--inverse-text-color);
+  animation: blink 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .state-icon {
+    animation: none;
+  }
 }
 
 @container nav (max-width: #{$stack-breakpoint}) {

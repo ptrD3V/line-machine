@@ -1,0 +1,72 @@
+// below this width the icon moves above the label
+$stack-breakpoint: 36rem;
+
+:host {
+  display: block;
+  container: nav / inline-size;
+  background: var(--surface-color);
+}
+
+ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  list-style: none;
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 12rem;
+  padding: var(--spacing-md) var(--spacing-sm);
+  font-size: clamp(0.75rem, 2.5cqi, var(--font-size-lg));
+  font-weight: 700;
+  color: var(--text-color);
+
+  &.state-error {
+    background: var(--danger-color);
+    color: var(--inverse-text-color);
+  }
+
+  &.state-idle {
+    background: var(--warning-color);
+    color: var(--inverse-text-color);
+  }
+}
+
+.label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.state-icon {
+  flex: none;
+  width: 1.25em;
+  height: 1.25em;
+}
+
+.state-running .state-icon {
+  color: var(--success-color);
+}
+
+.state-error .state-icon,
+.state-idle .state-icon {
+  color: var(--inverse-text-color);
+}
+
+@container nav (max-width: #{$stack-breakpoint}) {
+  li {
+    flex-direction: column-reverse;
+    padding: var(--spacing-sm) var(--spacing-xs);
+  }
+
+  .label {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,58 @@
+$block-width: clamp(5.5rem, 15cqi, 12rem);
+$block-width-column: clamp(8rem, 50cqi, 14rem);
+$connector-length: clamp(1rem, 5cqi, 5rem);
+$connector-length-column: 2rem;
+$connector-thickness: 4px;
+$column-breakpoint: 30rem;
+
+:host {
+  flex: 1;
+  display: flex;
+  container: line / inline-size;
+  align-items: safe center;
+  justify-content: safe center;
+  padding: var(--spacing-xl) var(--spacing-lg);
+  overflow: auto;
+}
+
+.line {
+  position: relative;
+  display: flex;
+  gap: $connector-length;
+  isolation: isolate;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 50% 0 auto;
+    height: $connector-thickness;
+    transform: translateY(-50%);
+    background: var(--success-color);
+    z-index: -1;
+  }
+}
+
+b-machine-block {
+  flex: 0 0 auto;
+  width: $block-width;
+  aspect-ratio: 9 / 8;
+}
+
+@container line (max-width: #{$column-breakpoint}) {
+  b-machine-block {
+    width: $block-width-column;
+  }
+
+  .line {
+    flex-direction: column;
+    gap: $connector-length-column;
+
+    &::before {
+      inset: 0 auto;
+      left: 50%;
+      width: $connector-thickness;
+      height: auto;
+      transform: translateX(-50%);
+    }
+  }
+}

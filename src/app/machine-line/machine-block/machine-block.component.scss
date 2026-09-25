@@ -1,0 +1,63 @@
+:host {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  container-type: inline-size;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm);
+  background: var(--surface-color);
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+:host(.state-error) {
+  background: var(--danger-color);
+  color: var(--inverse-text-color);
+}
+
+:host(.state-idle) {
+  background: var(--warning-color);
+  color: var(--inverse-text-color);
+}
+
+.state-icon {
+  position: absolute;
+  top: var(--spacing-xs);
+  right: var(--spacing-xs);
+  width: clamp(1rem, 16cqi, 1.75rem);
+  height: clamp(1rem, 16cqi, 1.75rem);
+}
+
+:host(.state-running) .state-icon {
+  color: var(--success-color);
+  animation: rotate 2s linear infinite;
+}
+
+:host(.state-error) .state-icon,
+:host(.state-idle) .state-icon {
+  color: var(--inverse-text-color);
+  animation: blink 2s ease-in-out infinite;
+}
+
+.type-icon {
+  width: clamp(1.75rem, 35cqi, 4.5rem);
+  height: clamp(1.75rem, 35cqi, 4.5rem);
+}
+
+.label {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: clamp(0.75rem, 13cqi, var(--font-size-xl));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host(.state-running) .state-icon,
+  :host(.state-error) .state-icon,
+  :host(.state-idle) .state-icon {
+    animation: none;
+  }
+}

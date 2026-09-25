@@ -1,0 +1,6 @@
+[
+  { "id": "idx001", "type": "scale", "state": "running", "message": null },
+  { "id": "idx006", "type": "packer", "state": "error", "message": "Jam detected in feed unit" },
+  { "id": "idx007", "type": "attacher", "state": "running", "message": null },
+  { "id": "idx011", "type": "closer", "state": "idle", "message": "Waiting for product" }
+]

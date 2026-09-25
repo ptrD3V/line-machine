@@ -1,0 +1,13 @@
+<section aria-label="Machine status">
+  <ul>
+    @for (machine of machines(); track machine.id) {
+      <li [class]="'state-' + machine.state" [attr.title]="machine.message">
+        <span class="label">{{ machine.type | titlecase }}</span>
+        <mat-icon class="state-icon" [svgIcon]="stateIcon(machine.state)"></mat-icon>
+        <span class="visually-hidden">
+          {{ machine.state }}{{ machine.message ? ': ' + machine.message : '' }}
+        </span>
+      </li>
+    }
+  </ul>
+</section>

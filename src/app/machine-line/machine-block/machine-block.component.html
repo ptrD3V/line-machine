@@ -1,0 +1,4 @@
+<mat-icon class="state-icon" [svgIcon]="stateIcon()"></mat-icon>
+<mat-icon class="type-icon" [svgIcon]="typeIcon()"></mat-icon>
+<span class="label">{{ type() | titlecase }}</span>
+<span class="visually-hidden">{{ state() }}{{ message() ? ': ' + message() : '' }}</span>

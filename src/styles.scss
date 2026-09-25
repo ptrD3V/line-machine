@@ -1,0 +1,64 @@
+:root {
+  // Colors
+  --surface-color: #dcdcdc;
+  --text-color: #000000;
+  --inverse-text-color: #ffffff;
+  --background-color: #ffffff;
+  --danger-color: #fe3636;
+  --warning-color: #fc9701;
+  --success-color: #83ae25;
+  --primary-color: #009b97;
+
+  // Typography
+  --font-family-base: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+
+  // Spacing
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  background: var(--background-color);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family-base);
+  color: var(--text-color);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.mat-icon.inline-icon {
+  font-size: 1.25em;
+  width: 1em;
+  height: 1em;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.1;
+  }
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}

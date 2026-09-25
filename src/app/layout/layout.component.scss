@@ -1,0 +1,12 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.error {
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--danger-color);
+  color: var(--inverse-text-color);
+  font-weight: 700;
+}

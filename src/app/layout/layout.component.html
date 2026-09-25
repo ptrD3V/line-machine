@@ -1,0 +1,10 @@
+<b-header></b-header>
+@if (store.error(); as error) {
+  <div class="error" role="alert">{{ error }}</div>
+}
+@if (store.loaded()) {
+  <b-navigation></b-navigation>
+  <b-machine-line></b-machine-line>
+} @else if (!store.error()) {
+  <b-loading></b-loading>
+}

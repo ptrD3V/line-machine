@@ -1,0 +1,9 @@
+<div class="line">
+  @for (machine of machines(); track machine.id) {
+    <b-machine-block
+      [type]="machine.type"
+      [state]="machine.state"
+      [message]="machine.message"
+    ></b-machine-block>
+  }
+</div>

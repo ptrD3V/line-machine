@@ -1,0 +1,52 @@
+$stack-breakpoint: 36rem;
+
+:host {
+  display: block;
+  container: header / inline-size;
+  background: var(--surface-color);
+  padding: var(--spacing-lg);
+  border-bottom: 5px solid var(--primary-color);
+  font-size: clamp(0.85rem, 0.8rem + 1vw, 1.75rem);
+}
+
+header {
+  display: grid;
+  grid-template-columns: minmax(8rem, 1fr) auto auto;
+  grid-template-areas: 'logo date profile';
+  gap: var(--spacing-sm) var(--spacing-xl);
+  align-items: center;
+}
+
+img {
+  grid-area: logo;
+  width: 100%;
+  max-width: 20rem;
+  height: auto;
+}
+
+b-date-time {
+  grid-area: date;
+}
+
+b-profile {
+  grid-area: profile;
+}
+
+b-date-time,
+b-profile {
+  white-space: nowrap;
+}
+
+@container header (max-width: #{$stack-breakpoint}) {
+  header {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      'logo logo'
+      'date profile';
+    row-gap: var(--spacing-md);
+  }
+
+  img {
+    max-width: 14rem;
+  }
+}

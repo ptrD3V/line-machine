@@ -12,6 +12,7 @@ import {
   Subject,
   switchMap,
   tap,
+  timeout,
   timer,
 } from 'rxjs';
 import { Machine } from '../models/machine.model';
@@ -45,6 +46,7 @@ export const MachineStore = signalStore(
           exhaustMap(() => {
             patchState(store, { loading: true });
             return api.getMachines().pipe(
+              timeout(10000),
               tap((machines) => {
                 // skip write when data is unchanged
                 if (!isSame(machines, store.entities())) {

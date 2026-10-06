@@ -2,8 +2,10 @@ import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatIcon } from '@angular/material/icon';
-import { interval, map } from 'rxjs';
+import { map, timer } from 'rxjs';
 import { Icon } from '../utils/registered-icons';
+
+const MINUTE_MS = 60_000;
 
 @Component({
   selector: 'b-date-time',
@@ -13,5 +15,8 @@ import { Icon } from '../utils/registered-icons';
 })
 export class DateTimeComponent {
   protected readonly Icon = Icon;
-  now = toSignal(interval(1000).pipe(map(() => new Date())), { initialValue: new Date() });
+  now = toSignal(
+    timer(MINUTE_MS - (Date.now() % MINUTE_MS), MINUTE_MS).pipe(map(() => new Date())),
+    { initialValue: new Date() },
+  );
 }
